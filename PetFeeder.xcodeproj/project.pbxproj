@@ -3,19 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13B8FC6C2607161000341244 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B8FC6B2607161000341244 /* Utilities.swift */; };
 		13E12E5826070E92007638E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E12E5726070E92007638E7 /* AppDelegate.swift */; };
 		13E12E5A26070E92007638E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E12E5926070E92007638E7 /* SceneDelegate.swift */; };
 		13E12E5C26070E92007638E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E12E5B26070E92007638E7 /* ViewController.swift */; };
 		13E12E5F26070E93007638E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E12E5D26070E93007638E7 /* Main.storyboard */; };
 		13E12E6126070E94007638E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13E12E6026070E94007638E7 /* Assets.xcassets */; };
 		13E12E6426070E94007638E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E12E6226070E94007638E7 /* LaunchScreen.storyboard */; };
+		13E12E6D26070F1C007638E7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E12E6C26070F1C007638E7 /* SignUpViewController.swift */; };
+		13E12E7026070F2B007638E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E12E6F26070F2B007638E7 /* LoginViewController.swift */; };
+		13E12E7326070F45007638E7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E12E7226070F45007638E7 /* HomeViewController.swift */; };
+		13EA9FBE2607F76D0062DFD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13EA9FBD2607F76D0062DFD7 /* GoogleService-Info.plist */; };
+		13EA9FE5260826B30062DFD7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EA9FE4260826B30062DFD7 /* Constants.swift */; };
+		3F646A68A3036322D1E6266C /* Pods_PetFeeder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB3D47EC6E2C6343C0E6841 /* Pods_PetFeeder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13B8FC6B2607161000341244 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		13E12E5426070E92007638E7 /* PetFeeder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetFeeder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E12E5726070E92007638E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13E12E5926070E92007638E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +32,14 @@
 		13E12E6026070E94007638E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13E12E6326070E94007638E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13E12E6526070E94007638E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13E12E6C26070F1C007638E7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		13E12E6F26070F2B007638E7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		13E12E7226070F45007638E7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		13EA9FBD2607F76D0062DFD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		13EA9FE4260826B30062DFD7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1DB3D47EC6E2C6343C0E6841 /* Pods_PetFeeder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetFeeder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E2449AE2481DB8F22760C3E /* Pods-PetFeeder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetFeeder.release.xcconfig"; path = "Target Support Files/Pods-PetFeeder/Pods-PetFeeder.release.xcconfig"; sourceTree = "<group>"; };
+		A543EBB7E68684F3A0B1E3D9 /* Pods-PetFeeder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetFeeder.debug.xcconfig"; path = "Target Support Files/Pods-PetFeeder/Pods-PetFeeder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +47,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F646A68A3036322D1E6266C /* Pods_PetFeeder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13B8FC6A260715CB00341244 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				13B8FC6B2607161000341244 /* Utilities.swift */,
+				13EA9FE4260826B30062DFD7 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		13E12E4B26070E92007638E7 = {
 			isa = PBXGroup;
 			children = (
 				13E12E5626070E92007638E7 /* PetFeeder */,
 				13E12E5526070E92007638E7 /* Products */,
+				ED962CF1F93DE964CF666FC2 /* Pods */,
+				3F85E58A3E2C79F8447B0A6A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +86,43 @@
 			children = (
 				13E12E5726070E92007638E7 /* AppDelegate.swift */,
 				13E12E5926070E92007638E7 /* SceneDelegate.swift */,
-				13E12E5B26070E92007638E7 /* ViewController.swift */,
+				13B8FC6A260715CB00341244 /* Helpers */,
+				13E12E7526070F4C007638E7 /* View Contollers */,
 				13E12E5D26070E93007638E7 /* Main.storyboard */,
 				13E12E6026070E94007638E7 /* Assets.xcassets */,
 				13E12E6226070E94007638E7 /* LaunchScreen.storyboard */,
+				13EA9FBD2607F76D0062DFD7 /* GoogleService-Info.plist */,
 				13E12E6526070E94007638E7 /* Info.plist */,
 			);
 			path = PetFeeder;
+			sourceTree = "<group>";
+		};
+		13E12E7526070F4C007638E7 /* View Contollers */ = {
+			isa = PBXGroup;
+			children = (
+				13E12E5B26070E92007638E7 /* ViewController.swift */,
+				13E12E6C26070F1C007638E7 /* SignUpViewController.swift */,
+				13E12E6F26070F2B007638E7 /* LoginViewController.swift */,
+				13E12E7226070F45007638E7 /* HomeViewController.swift */,
+			);
+			path = "View Contollers";
+			sourceTree = "<group>";
+		};
+		3F85E58A3E2C79F8447B0A6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DB3D47EC6E2C6343C0E6841 /* Pods_PetFeeder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED962CF1F93DE964CF666FC2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A543EBB7E68684F3A0B1E3D9 /* Pods-PetFeeder.debug.xcconfig */,
+				3E2449AE2481DB8F22760C3E /* Pods-PetFeeder.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +132,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13E12E6826070E94007638E7 /* Build configuration list for PBXNativeTarget "PetFeeder" */;
 			buildPhases = (
+				CF571FC6CF130F5F79972D6D /* [CP] Check Pods Manifest.lock */,
 				13E12E5026070E92007638E7 /* Sources */,
 				13E12E5126070E92007638E7 /* Frameworks */,
 				13E12E5226070E92007638E7 /* Resources */,
+				9F40D14F785417E6CB787DCB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,12 +185,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				13E12E6426070E94007638E7 /* LaunchScreen.storyboard in Resources */,
+				13EA9FBE2607F76D0062DFD7 /* GoogleService-Info.plist in Resources */,
 				13E12E6126070E94007638E7 /* Assets.xcassets in Resources */,
 				13E12E5F26070E93007638E7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9F40D14F785417E6CB787DCB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PetFeeder/Pods-PetFeeder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PetFeeder/Pods-PetFeeder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PetFeeder/Pods-PetFeeder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF571FC6CF130F5F79972D6D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PetFeeder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		13E12E5026070E92007638E7 /* Sources */ = {
@@ -139,7 +242,12 @@
 			files = (
 				13E12E5C26070E92007638E7 /* ViewController.swift in Sources */,
 				13E12E5826070E92007638E7 /* AppDelegate.swift in Sources */,
+				13B8FC6C2607161000341244 /* Utilities.swift in Sources */,
+				13E12E6D26070F1C007638E7 /* SignUpViewController.swift in Sources */,
+				13E12E7026070F2B007638E7 /* LoginViewController.swift in Sources */,
 				13E12E5A26070E92007638E7 /* SceneDelegate.swift in Sources */,
+				13E12E7326070F45007638E7 /* HomeViewController.swift in Sources */,
+				13EA9FE5260826B30062DFD7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +391,7 @@
 		};
 		13E12E6926070E94007638E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A543EBB7E68684F3A0B1E3D9 /* Pods-PetFeeder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +411,7 @@
 		};
 		13E12E6A26070E94007638E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E2449AE2481DB8F22760C3E /* Pods-PetFeeder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
