@@ -11,24 +11,42 @@ import Firebase
 
 class HomeViewController: UIViewController {
 	@IBOutlet weak var signOutButton: UIButton!
+	@IBOutlet weak var dispenseButton: UIButton!
+	@IBOutlet weak var feedDurationLabel: UILabel!
+	@IBOutlet weak var feedDurationVal: UILabel!
+	@IBOutlet weak var feedDurationSlider: UISlider!
+	@IBOutlet weak var currentBowlWeightLabel: UILabel!
+	@IBOutlet weak var bowlWeightLabel: UILabel!
+	@IBOutlet weak var tareButton: UIButton!
+	@IBOutlet weak var minBowlWeightLabel: UILabel!
+	@IBOutlet weak var minBowlWeightVal: UILabel!
+	@IBOutlet weak var minBowlWeightSlider: UISlider!
+	@IBOutlet weak var scheduleOneLabel: UILabel!
+	@IBOutlet weak var scheduleTwoLabel: UILabel!
+	@IBOutlet weak var scheduleOneTextField: UITextField!
+	@IBOutlet weak var scheduleTwoTextField: UITextField!
+	
+	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+		//Set up Elements
+		self.setUpElements()
+        //Get the users current data values
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-	
+	func setUpElements() {
+		Utilities.styleFilledButtonDashboard(dispenseButton)
+		Utilities.styleFilledButtonDashboard(tareButton)
+		Utilities.styleFilledButton(signOutButton)
+		Utilities.styleTextField(scheduleOneTextField)
+		Utilities.styleTextField(scheduleTwoTextField)
+		
+		//Set up initial values in text fields
+		feedDurationVal.text = "10"
+		bowlWeightLabel.text = "0"
+		minBowlWeightVal.text = "5"
+	}
 	@IBAction func signOutTapped(_ sender: Any) {
 		//Sign out user
 		self.signOutUser()

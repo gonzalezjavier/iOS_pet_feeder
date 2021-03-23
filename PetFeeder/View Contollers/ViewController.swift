@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class ViewController: UIViewController {
 
@@ -22,11 +22,16 @@ class ViewController: UIViewController {
 		setUpElements()
 		//Go to home page if already logged in
 		if FirebaseAuth.Auth.auth().currentUser != nil {
-			let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
-
-			view.window?.rootViewController = homeViewController
-			view.window?.makeKeyAndVisible()
+			DispatchQueue.main.async {
+				self.transitionToHome()
+			}
 		}
+	}
+	func transitionToHome() {
+		let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+
+		view.window?.rootViewController = homeViewController
+		view.window?.makeKeyAndVisible()
 	}
 	
 	func setUpElements() {
