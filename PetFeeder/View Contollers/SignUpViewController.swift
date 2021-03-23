@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 	
 	
 	@IBOutlet weak var firstNameTextField: UITextField!
@@ -48,6 +48,11 @@ class SignUpViewController: UIViewController {
 		}
 	}
 	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true
+	}
+	
 	func setUpElements() {
 		//Hide the error label
 		errorLabel.alpha = 0
@@ -59,6 +64,16 @@ class SignUpViewController: UIViewController {
 		Utilities.styleFilledButton(signUpButton)
 		Utilities.styleFilledButton(signUpButton)
 		Utilities.styleFilledButton(cancelButton)
+		//sets textfield delegate
+		firstNameTextField.delegate = self
+		lastNameTextField.delegate = self
+		emailTextField.delegate = self
+		passwordTextField.delegate = self
+		//set return key type
+		firstNameTextField.returnKeyType = .done
+		lastNameTextField.returnKeyType = .done
+		emailTextField.returnKeyType = .done
+		passwordTextField.returnKeyType = .done
 	}
 	
 	func validateFields() -> String? {
@@ -93,16 +108,16 @@ class SignUpViewController: UIViewController {
 			//check for errors
 			if err != nil {
 				//There was an error
-				self.showError("Error creating user")
+				self.showError(err!.localizedDescription)
 				success = "error creating user"
 			} else {
 				//No error, save user info
 				let db = Firestore.firestore()
 				success = nil
-				db.collection("users").document(result!.user.uid).setData(["basicinfo": ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid]]) { (error) in
+				db.collection("users").document(result!.user.uid).setData(["basicinfo": ["firstname":firstName, "lastname":lastName, "email":email ,"uid": result!.user.uid], "feedinginfo": ["dispense":0, "feedduration":0, "currentbowlweight":0, "tarebowl":0, "minbowlweight":0, "scheduleone":"", "scheduletwo":""]]) { (error) in
 					if error != nil {
 						//show error message
-						self.showError("Error saving user data")
+						self.showError(error!.localizedDescription)
 					}
 				}
 			}

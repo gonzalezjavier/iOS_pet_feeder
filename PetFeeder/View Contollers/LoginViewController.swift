@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 	
 	
 	@IBOutlet weak var emailTextField: UITextField!
@@ -42,19 +42,20 @@ class LoginViewController: UIViewController {
 		Utilities.styleTextField(passwordTextField)
 		Utilities.styleFilledButton(loginButton)
 		Utilities.styleFilledButton(cancelButton)
-		
+		//set up text field delegates
+		emailTextField.delegate = self
+		passwordTextField.delegate = self
+		//Set up return key type
+		emailTextField.returnKeyType = .done
+		passwordTextField.returnKeyType = .done
 		
 	}
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true
+	}
+	
 	func validateFields() -> String? {
 		//Check that all feilds are filled in
 		if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {

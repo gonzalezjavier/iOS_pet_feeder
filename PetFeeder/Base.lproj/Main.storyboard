@@ -69,22 +69,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8MN-pO-XyA">
-                                <rect key="frame" x="40" y="40" width="310" height="470"/>
+                                <rect key="frame" x="40" y="40" width="310" height="500"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kol-jD-vpI">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next" textContentType="given-name"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="given-name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dmW-gD-32P">
                                         <rect key="frame" x="0.0" y="70" width="310" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next" textContentType="family-name"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" textContentType="family-name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JEH-0Q-u4G">
                                         <rect key="frame" x="0.0" y="140" width="310" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uAb-oG-n0q">
                                         <rect key="frame" x="0.0" y="210" width="310" height="50"/>
@@ -109,7 +109,10 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1r-dR-wW7">
-                                        <rect key="frame" x="0.0" y="420" width="310" height="50"/>
+                                        <rect key="frame" x="0.0" y="420" width="310" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="nPr-Ru-Ui2"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
@@ -118,7 +121,6 @@
                                 <constraints>
                                     <constraint firstItem="dmW-gD-32P" firstAttribute="height" secondItem="Kol-jD-vpI" secondAttribute="height" id="6bl-fu-iZd"/>
                                     <constraint firstItem="uAb-oG-n0q" firstAttribute="height" secondItem="Kol-jD-vpI" secondAttribute="height" id="Mjq-ZR-iO7"/>
-                                    <constraint firstItem="x1r-dR-wW7" firstAttribute="height" secondItem="Kol-jD-vpI" secondAttribute="height" id="aOK-qs-qQI"/>
                                     <constraint firstItem="JEH-0Q-u4G" firstAttribute="height" secondItem="Kol-jD-vpI" secondAttribute="height" id="nuJ-Mi-qB9"/>
                                     <constraint firstItem="GC8-8u-hWU" firstAttribute="height" secondItem="fHz-ij-I5B" secondAttribute="height" id="oCa-gN-mQ0"/>
                                     <constraint firstItem="fHz-ij-I5B" firstAttribute="height" secondItem="Kol-jD-vpI" secondAttribute="height" id="vr7-fG-owe"/>
@@ -233,8 +235,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwn-T2-aYm">
                                 <rect key="frame" x="0.0" y="44" width="390" height="800"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hM8-Cb-oxA" userLabel="Main Vertical Stack View">
-                                        <rect key="frame" x="40" y="-9" width="310" height="818"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hM8-Cb-oxA" userLabel="Main Vertical Stack View">
+                                        <rect key="frame" x="40" y="-9" width="310" height="890"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Feeder Dashboard" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmg-Qo-NNK">
                                                 <rect key="frame" x="0.0" y="0.0" width="310" height="200"/>
@@ -250,67 +252,79 @@
                                                     <constraint firstAttribute="height" constant="100" id="EPU-eu-XRh"/>
                                                 </constraints>
                                                 <state key="normal" title="Dispense Food"/>
+                                                <connections>
+                                                    <action selector="dispenseFoodBtnPressed:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="Cj6-ge-mz9"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mtG-uW-jsX">
-                                                <rect key="frame" x="0.0" y="340" width="310" height="20.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="340" width="310" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feeding Duration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYS-4Q-tNU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="229" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="229" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Num" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RX3-hm-g5k">
-                                                        <rect key="frame" x="239" y="0.0" width="71" height="20.333333333333332"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Num" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RX3-hm-g5k">
+                                                        <rect key="frame" x="239" y="0.0" width="71" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="wYS-4Q-tNU" firstAttribute="baseline" secondItem="RX3-hm-g5k" secondAttribute="firstBaseline" id="g6Y-IG-aeb"/>
+                                                    <constraint firstAttribute="height" constant="30" id="yna-ff-eWv"/>
                                                 </constraints>
                                             </stackView>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="G8M-6T-Orb" userLabel="Feeding Duration Slider">
-                                                <rect key="frame" x="-2" y="380.33333333333331" width="314" height="31"/>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="G8M-6T-Orb" userLabel="Feeding Duration Slider">
+                                                <rect key="frame" x="-2" y="390" width="314" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="kdx-8a-ahH"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="feedDurationSliderMoved:" destination="BRl-Gb-VLv" eventType="valueChanged" id="sxd-Wc-RWh"/>
+                                                </connections>
                                             </slider>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bdh-hI-faL" userLabel="Horizontal Bowl Weight Stack View">
-                                                <rect key="frame" x="0.0" y="430.33333333333331" width="310" height="20.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="440" width="310" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Bowl Weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLj-AT-pZ8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="222.33333333333334" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="222.33333333333334" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yb6-Fu-CoR">
-                                                        <rect key="frame" x="232.33333333333329" y="0.0" width="77.666666666666657" height="20.333333333333332"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yb6-Fu-CoR">
+                                                        <rect key="frame" x="232.33333333333329" y="0.0" width="77.666666666666657" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="cex-d7-qPN"/>
+                                                </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8J1-DA-3zz">
-                                                <rect key="frame" x="0.0" y="470.66666666666674" width="310" height="100"/>
+                                                <rect key="frame" x="0.0" y="490" width="310" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="nQR-rN-a00"/>
                                                 </constraints>
                                                 <state key="normal" title="Tare Bowl"/>
+                                                <connections>
+                                                    <action selector="tareBtnPressed:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="Raq-oH-TIN"/>
+                                                </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="owy-JF-CkY">
-                                                <rect key="frame" x="0.0" y="590.66666666666663" width="310" height="20.333333333333371"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owy-JF-CkY">
+                                                <rect key="frame" x="0.0" y="610" width="310" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum Bowl Weight (g)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poa-Fb-HHJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="261.33333333333331" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="261.33333333333331" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Num" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxL-bA-QYx">
-                                                        <rect key="frame" x="261.33333333333331" y="0.0" width="48.666666666666686" height="20.333333333333332"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Num" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxL-bA-QYx">
+                                                        <rect key="frame" x="261.33333333333331" y="0.0" width="48.666666666666686" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -318,45 +332,67 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="poa-Fb-HHJ" secondAttribute="trailing" constant="48.666666666666686" id="Dej-7r-Pc0"/>
+                                                    <constraint firstAttribute="height" constant="40" id="QGv-gg-crM"/>
                                                 </constraints>
                                             </stackView>
-                                            <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="4nd-Nx-wzP" userLabel="Minimum Bowl Weight Slider">
-                                                <rect key="frame" x="-2" y="631" width="314" height="31"/>
+                                            <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="4nd-Nx-wzP" userLabel="Minimum Bowl Weight Slider">
+                                                <rect key="frame" x="-2" y="670" width="314" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="6Eo-Xc-7e8"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="minBowlWeightSliderMoved:" destination="BRl-Gb-VLv" eventType="valueChanged" id="yGm-P0-iKI"/>
+                                                </connections>
                                             </slider>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-9N-Z8K" userLabel="Horizontal Schedule Labels Stack View">
-                                                <rect key="frame" x="0.0" y="681" width="310" height="20.333333333333371"/>
+                                                <rect key="frame" x="0.0" y="720" width="310" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYg-fC-RAD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iv-te-FFk">
-                                                        <rect key="frame" x="155" y="0.0" width="155" height="20.333333333333332"/>
+                                                        <rect key="frame" x="155" y="0.0" width="155" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="VNc-TH-H9P"/>
+                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Km5-gF-Pl0" userLabel="Horizontal Schedule Text Fields Stack View">
-                                                <rect key="frame" x="0.0" y="721.33333333333337" width="310" height="34"/>
+                                                <rect key="frame" x="0.0" y="780" width="310" height="40"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TEt-Eo-wXi" userLabel="Schedule 1 Time Text Field">
-                                                        <rect key="frame" x="0.0" y="0.0" width="145" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textField opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="TEt-Eo-wXi" userLabel="Schedule 1 Time Text Field">
+                                                        <rect key="frame" x="0.0" y="0.0" width="145" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="scheduleOneEditted:" destination="BRl-Gb-VLv" eventType="editingDidEnd" id="7a9-6h-MgU"/>
+                                                        </connections>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s84-Ck-nPW" userLabel="Schedule 2 Time Text Field">
-                                                        <rect key="frame" x="165" y="0.0" width="145" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s84-Ck-nPW" userLabel="Schedule 2 Time Text Field">
+                                                        <rect key="frame" x="165" y="0.0" width="145" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="scheduleTwoEditted:" destination="BRl-Gb-VLv" eventType="editingDidEnd" id="r0e-8E-NRk"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="12h-Gn-b0P"/>
+                                                </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIp-4c-r0v">
-                                                <rect key="frame" x="0.0" y="775.33333333333337" width="310" height="42.666666666666629"/>
+                                                <rect key="frame" x="0.0" y="840" width="310" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="uop-wo-RN7"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="Sign Out"/>
                                                 <connections>
@@ -364,17 +400,13 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="lIp-4c-r0v" firstAttribute="height" secondItem="Kzc-yE-vHU" secondAttribute="height" multiplier="0.426667" id="a4j-rI-VCN"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hM8-Cb-oxA" secondAttribute="trailing" constant="40" id="Rcd-Hy-DfN"/>
-                                    <constraint firstItem="hM8-Cb-oxA" firstAttribute="centerY" secondItem="wwn-T2-aYm" secondAttribute="centerY" id="SaM-aQ-4He"/>
                                     <constraint firstItem="hM8-Cb-oxA" firstAttribute="centerX" secondItem="wwn-T2-aYm" secondAttribute="centerX" id="gBz-l0-vsr"/>
                                     <constraint firstItem="hM8-Cb-oxA" firstAttribute="top" secondItem="wwn-T2-aYm" secondAttribute="top" constant="-9" id="iUH-TV-GLn"/>
-                                    <constraint firstAttribute="bottom" secondItem="hM8-Cb-oxA" secondAttribute="bottom" constant="-7.3333333333333712" id="rsi-Kq-HB7"/>
+                                    <constraint firstAttribute="bottom" secondItem="hM8-Cb-oxA" secondAttribute="bottom" id="rsi-Kq-HB7"/>
                                     <constraint firstItem="hM8-Cb-oxA" firstAttribute="leading" secondItem="wwn-T2-aYm" secondAttribute="leading" constant="40" id="uIm-RY-kep"/>
                                 </constraints>
                             </scrollView>
@@ -395,6 +427,8 @@
                         <outlet property="feedDurationLabel" destination="wYS-4Q-tNU" id="uDy-21-q3q"/>
                         <outlet property="feedDurationSlider" destination="G8M-6T-Orb" id="tja-fw-Lz0"/>
                         <outlet property="feedDurationVal" destination="RX3-hm-g5k" id="L0A-fm-aSI"/>
+                        <outlet property="mainStackViewTopConstraint" destination="iUH-TV-GLn" id="Ggo-At-9Wy"/>
+                        <outlet property="mainVStackView" destination="hM8-Cb-oxA" id="oqy-dC-dZR"/>
                         <outlet property="minBowlWeightLabel" destination="poa-Fb-HHJ" id="8Zs-7s-sfX"/>
                         <outlet property="minBowlWeightSlider" destination="4nd-Nx-wzP" id="DV7-SA-CbY"/>
                         <outlet property="minBowlWeightVal" destination="pxL-bA-QYx" id="1zL-e0-b8N"/>
@@ -402,6 +436,8 @@
                         <outlet property="scheduleOneTextField" destination="TEt-Eo-wXi" id="YP7-f5-JW8"/>
                         <outlet property="scheduleTwoLabel" destination="0iv-te-FFk" id="dhN-kV-f8n"/>
                         <outlet property="scheduleTwoTextField" destination="s84-Ck-nPW" id="MG9-Nb-O58"/>
+                        <outlet property="schedulingHStackView" destination="Km5-gF-Pl0" id="mfz-fS-YlI"/>
+                        <outlet property="scrollView" destination="wwn-T2-aYm" id="Pma-lP-kq1"/>
                         <outlet property="signOutButton" destination="lIp-4c-r0v" id="hCG-0u-UuP"/>
                         <outlet property="tareButton" destination="8J1-DA-3zz" id="kEe-OP-GMp"/>
                     </connections>
