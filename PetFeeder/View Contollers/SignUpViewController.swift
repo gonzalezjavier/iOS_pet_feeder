@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 	
@@ -112,19 +113,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 				success = "error creating user"
 			} else {
 				//No error, save user info
-				let db = Firestore.firestore()
-				success = nil
-				db.collection("users").document(result!.user.uid).setData(["basicinfo": ["firstname":firstName, "lastname":lastName, "email":email ,"uid": result!.user.uid], "feedinginfo": ["dispense":0, "feedduration":0, "currentbowlweight":0, "tarebowl":0, "minbowlweight":0, "scheduleone":"", "scheduletwo":""]]) { (error) in
-					if error != nil {
-						//show error message
-						self.showError(error!.localizedDescription)
-					}
-				}
+				let dbref = Database.database().reference()
 				
-				
-				
-				
-				
+				dbref.child("users").child(result!.user.uid).setValue(["basicinfo": ["firstname":firstName, "lastname":lastName, "email":email ,"uid": result!.user.uid], "feedinginfo": ["dispense":0, "feedduration":0, "currentbowlweight":0, "tarebowl":0, "minbowlweight":0, "scheduleone":"", "scheduletwo":""]])
 			}
 		}
 		return success

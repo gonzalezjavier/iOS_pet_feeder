@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 
 class HomeViewController: UIViewController, UITextFieldDelegate {
@@ -39,7 +40,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 		//get user data
-		self.getUserData()
+		DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+			//after delay get current values
+			self.getUserData()
+		}
 		//Set up Elements
 		self.setUpElements()
 
@@ -47,7 +51,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        //Get the users current data values
     }
 	
 	deinit {
@@ -70,11 +73,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		scheduleOneTextField.returnKeyType = .done
 		scheduleTwoTextField.returnKeyType = .done
 		
-		//Set up initial values in text fields and sliders
-//		feedDurationVal.text = String(Int(feedDurationSlider.value))
-//		bowlWeightLabel.text = "5"
-//		minBowlWeightVal.text = String(Int(minBowlWeightSlider.value))
-
 	}
 	@IBAction func signOutTapped(_ sender: Any) {
 		//Sign out user
@@ -133,72 +131,52 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	
 	@IBAction func updateButtonPressed(_ sender: Any) {
 		//update database with current values of sliders and date/time
+		
 		updateUserData()
 	}
 	
 	func getUserData() {
-		let feedingInfoRef = db.collection("users").document(FirebaseAuth.Auth.auth().currentUser!.uid)
+		let dbref = Database.database().reference()
 		
+		let userID = Auth.auth().currentUser?.uid
+		dbref.child("users").child(userID!).child("feedinginfo").observeSingleEvent(of: .value, with: { [self] (snapshot) in
+			// Get user value
+			let value = snapshot.value as? NSDictionary
+			let bowlweight = value?["currentbowlweight"] as? Int64 ?? 0
+			let minbowlweight = value?["minbowlweight"] as? Int64 ?? 0
+			//let tarebowl = value?["tarebowl"] as? Int64 ?? 0
+			let feedduration = value?["feedduration"] as? Int64 ?? 0
+			//let dispense = value?["dispense"] as? Int64 ?? 0
+			//let scheduleone = value?["scheduleone"] as? String ?? ""
+			//let scheduletwo = value?["scheduletwo"] as? String ?? ""
+			
+			bowlWeightLabel.text = String(bowlweight)
+			feedDurationVal.text = String(feedduration)
+			feedDurationSlider.value = Float(feedduration)
+			minBowlWeightVal.text = String(minbowlweight)
+			minBowlWeightSlider.value = Float(minbowlweight)
 
-		feedingInfoRef.getDocument { [self] (document, error) in
-			if let document = document, document.exists {
-				let data = document.data()
-				let feedingInfo = "\(String(describing: data!["feedinginfo"]))"
-				
-				//go through each value and store locally
-				var lines = feedingInfo.components(separatedBy: .newlines)
-				lines.removeFirst()
-				lines.removeLast()
-				var valueArray = Array<Int>()
-				//Gets all integer values to be stored
-				for i in 0...6 {
-					let tempLine = lines[i].components(separatedBy: CharacterSet.decimalDigits.inverted)
-					if ((i < 4) || (i > 5)) { //Not schedules
-						//get values and add to values array
-						valueArray.append(self.getValues(arr: tempLine))
-					} else {
-						//get the schedules
-					}
-				}
-				//Store each value in respective local variable
-				bowlWeightLabel.text = String(valueArray[0])
-				feedDurationVal.text = String(valueArray[2])
-				feedDurationSlider.value = Float(valueArray[2])
-				minBowlWeightVal.text = String(valueArray[3])
-				minBowlWeightSlider.value = Float(valueArray[3])
-				
-			} else {
-				print("Document does not exist")
-			}
+			// ...
+			}) { (error) in
+			print(error.localizedDescription)
 		}
 	}
 	
-	func getValues(arr: Array<String>) -> Int {
-		var num = 0
-		for item in arr {
-			if let number = Int(item) {
-				num = number
-			}
-		}
-		return num
-	}
 	
 	func updateUserData() {
-		//update
-		let ref = db.collection("users").document(FirebaseAuth.Auth.auth().currentUser!.uid);
+		let dbref = Database.database().reference()
+		let userid = Auth.auth().currentUser?.uid
+		guard let key = dbref.child("users").child(userid!).child("feedinginfo").key else { return }
+		let info = ["dispense": 0,
+					"feedduration": Int(feedDurationSlider.value),
+					"currentbowlweight": Int(bowlWeightLabel.text!)!,
+					"tarebowl": 0,
+					"minbowlweight": Int(minBowlWeightSlider.value),
+					"scheduleone":"",
+					"scheduletwo":""] as [String : Any]
+		let childUpdates = ["/users/\(userid!)/\(key)/": info]
+		dbref.updateChildValues(childUpdates)
 
-		// Set the feed duration and min bow weight field to updated values
-		ref.updateData([
-			"feedinginfo.feedduration": Int(feedDurationSlider.value),
-			"feedinginfo.minbowlweight": Int(minBowlWeightSlider.value)
-		]) { err in
-			if let err = err {
-				print("Error updating document: \(err)")
-			} else {
-				print("Document successfully updated")
-			}
-		}
-		
 	}
 	
 	func signOutUser() {
