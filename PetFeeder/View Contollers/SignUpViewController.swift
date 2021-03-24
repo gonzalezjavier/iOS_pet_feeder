@@ -120,6 +120,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 						self.showError(error!.localizedDescription)
 					}
 				}
+				
+				
+				
+				
+				
 			}
 		}
 		return success

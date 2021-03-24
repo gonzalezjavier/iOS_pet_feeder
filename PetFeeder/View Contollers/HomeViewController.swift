@@ -25,7 +25,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var scheduleTwoLabel: UILabel!
 	@IBOutlet weak var scheduleOneTextField: UITextField!
 	@IBOutlet weak var scheduleTwoTextField: UITextField!
-	
+	@IBOutlet weak var updateButton: UIButton!
 	@IBOutlet weak var schedulingHStackView: UIStackView!
 	@IBOutlet weak var scrollView: UIScrollView!
 	@IBOutlet weak var mainVStackView: UIStackView!
@@ -36,23 +36,13 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	let db = Firestore.firestore()
 	
 	
-	//User Data
-	var uid: String = ""
-	var dispense: Int = 0
-	var feedDuration: Int = 0
-	var currentBowlWeight: Int = 0
-	var tareBowl: Int = 0
-	var minBowlWeight: Int = 0
-	var scheduleOne: String = ""
-	var scheduleTwo: String = ""
-
-	
     override func viewDidLoad() {
         super.viewDidLoad()
+		//get user data
+		self.getUserData()
 		//Set up Elements
 		self.setUpElements()
-		//Listen for keyboard
-//		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -72,6 +62,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		Utilities.styleFilledButton(signOutButton)
 		Utilities.styleTextField(scheduleOneTextField)
 		Utilities.styleTextField(scheduleTwoTextField)
+		Utilities.styleFilledButton(updateButton)
 		//sets the textfield delegates
 		scheduleOneTextField.delegate = self
 		scheduleTwoTextField.delegate = self
@@ -79,10 +70,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		scheduleOneTextField.returnKeyType = .done
 		scheduleTwoTextField.returnKeyType = .done
 		
-		//Set up initial values in text fields
-		feedDurationVal.text = String(Int(feedDurationSlider.value))
-		bowlWeightLabel.text = "5"
-		minBowlWeightVal.text = String(Int(minBowlWeightSlider.value))
+		//Set up initial values in text fields and sliders
+//		feedDurationVal.text = String(Int(feedDurationSlider.value))
+//		bowlWeightLabel.text = "5"
+//		minBowlWeightVal.text = String(Int(minBowlWeightSlider.value))
+
 	}
 	@IBAction func signOutTapped(_ sender: Any) {
 		//Sign out user
@@ -92,68 +84,120 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	@IBAction func feedDurationSliderMoved(_ sender: Any) {
 		//Update the feed duration label
 		feedDurationVal.text = String(Int(feedDurationSlider.value))
-		//Send updated data to database
-		
 	}
 	
 	@IBAction func minBowlWeightSliderMoved(_ sender: Any) {
 		//Update min bowl weight label
 		minBowlWeightVal.text = String(Int(minBowlWeightSlider.value))
-		//Send updated data to database
 		
 	}
 	
 	@IBAction func dispenseFoodBtnPressed(_ sender: Any) {
-		//print out data to test retrieving data
-		getUserData()
+		//Send one to the database dispense field
+		let ref = db.collection("users").document(FirebaseAuth.Auth.auth().currentUser!.uid);
+		ref.updateData([
+			"feedinginfo.dispense": 1
+		]) { err in
+			if let err = err {
+				print("Error updating document: \(err)")
+			} else {
+				print("Document successfully updated")
+			}
+		}
 	}
 	
 	@IBAction func tareBtnPressed(_ sender: Any) {
-		
-		
+		//Send one to the database tare field
+		let ref = db.collection("users").document(FirebaseAuth.Auth.auth().currentUser!.uid);
+		ref.updateData([
+			"feedinginfo.tarebowl": 1
+		]) { err in
+			if let err = err {
+				print("Error updating document: \(err)")
+			} else {
+				print("Document successfully updated")
+			}
+		}
 	}
 	
 	@IBAction func scheduleOneEditted(_ sender: Any) {
+		//dont think i need anything here
+		
 	}
 	
 	@IBAction func scheduleTwoEditted(_ sender: Any) {
+		//i dont think i need anything here
+		
+		
 	}
 	
-	
-	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		textField.resignFirstResponder()
-		return true
-	}
-		
-	
-	@objc func keyboardWillChange(notification: NSNotification) {
-		
-		guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-			return
-		}
-		
-		if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
-			view.frame.origin.y = -keyboardRect.height
-		} else {
-			view.frame.origin.y = 0
-		}
-
+	@IBAction func updateButtonPressed(_ sender: Any) {
+		//update database with current values of sliders and date/time
+		updateUserData()
 	}
 	
 	func getUserData() {
 		let feedingInfoRef = db.collection("users").document(FirebaseAuth.Auth.auth().currentUser!.uid)
 		
-		feedingInfoRef.getDocument { (document, error) in
+
+		feedingInfoRef.getDocument { [self] (document, error) in
 			if let document = document, document.exists {
-				let documentDescription = document.data().map(String.init(describing:)) ?? "nil"
-				print("document data: \(documentDescription)")
+				let data = document.data()
+				let feedingInfo = "\(String(describing: data!["feedinginfo"]))"
+				
+				//go through each value and store locally
+				var lines = feedingInfo.components(separatedBy: .newlines)
+				lines.removeFirst()
+				lines.removeLast()
+				var valueArray = Array<Int>()
+				//Gets all integer values to be stored
+				for i in 0...6 {
+					let tempLine = lines[i].components(separatedBy: CharacterSet.decimalDigits.inverted)
+					if ((i < 4) || (i > 5)) { //Not schedules
+						//get values and add to values array
+						valueArray.append(self.getValues(arr: tempLine))
+					} else {
+						//get the schedules
+					}
+				}
+				//Store each value in respective local variable
+				bowlWeightLabel.text = String(valueArray[0])
+				feedDurationVal.text = String(valueArray[2])
+				feedDurationSlider.value = Float(valueArray[2])
+				minBowlWeightVal.text = String(valueArray[3])
+				minBowlWeightSlider.value = Float(valueArray[3])
+				
 			} else {
 				print("Document does not exist")
 			}
 		}
 	}
 	
+	func getValues(arr: Array<String>) -> Int {
+		var num = 0
+		for item in arr {
+			if let number = Int(item) {
+				num = number
+			}
+		}
+		return num
+	}
+	
 	func updateUserData() {
+		//update
+		let ref = db.collection("users").document(FirebaseAuth.Auth.auth().currentUser!.uid);
+
+		// Set the feed duration and min bow weight field to updated values
+		ref.updateData([
+			"feedinginfo.feedduration": Int(feedDurationSlider.value),
+			"feedinginfo.minbowlweight": Int(minBowlWeightSlider.value)
+		]) { err in
+			if let err = err {
+				print("Error updating document: \(err)")
+			} else {
+				print("Document successfully updated")
+			}
+		}
 		
 	}
 	
@@ -172,6 +216,25 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		
 		view.window?.rootViewController = loginSignUpViewController
 		view.window?.makeKeyAndVisible()
+	}
+	
+	@objc func keyboardWillChange(notification: NSNotification) {
+		
+		guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+			return
+		}
+		
+		if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+			view.frame.origin.y = -keyboardRect.height
+		} else {
+			view.frame.origin.y = 0
+		}
+
+	}
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true
 	}
 
 }

@@ -236,7 +236,7 @@
                                 <rect key="frame" x="0.0" y="44" width="390" height="800"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hM8-Cb-oxA" userLabel="Main Vertical Stack View">
-                                        <rect key="frame" x="40" y="-9" width="310" height="890"/>
+                                        <rect key="frame" x="40" y="-9" width="310" height="960"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Feeder Dashboard" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmg-Qo-NNK">
                                                 <rect key="frame" x="0.0" y="0.0" width="310" height="200"/>
@@ -388,8 +388,15 @@
                                                     <constraint firstAttribute="height" constant="40" id="12h-Gn-b0P"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIp-4c-r0v">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPn-Qm-UqA">
                                                 <rect key="frame" x="0.0" y="840" width="310" height="50"/>
+                                                <state key="normal" title="Update"/>
+                                                <connections>
+                                                    <action selector="updateButtonPressed:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="0Fp-Yk-g2h"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIp-4c-r0v">
+                                                <rect key="frame" x="0.0" y="910" width="310" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="uop-wo-RN7"/>
                                                 </constraints>
@@ -400,6 +407,10 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="TPn-Qm-UqA" firstAttribute="centerX" secondItem="hM8-Cb-oxA" secondAttribute="centerX" id="8Rr-Rr-feY"/>
+                                            <constraint firstItem="TPn-Qm-UqA" firstAttribute="height" secondItem="lIp-4c-r0v" secondAttribute="height" id="LEp-Yh-hUA"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -440,6 +451,7 @@
                         <outlet property="scrollView" destination="wwn-T2-aYm" id="Pma-lP-kq1"/>
                         <outlet property="signOutButton" destination="lIp-4c-r0v" id="hCG-0u-UuP"/>
                         <outlet property="tareButton" destination="8J1-DA-3zz" id="kEe-OP-GMp"/>
+                        <outlet property="updateButton" destination="TPn-Qm-UqA" id="6X6-mK-NRA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDq-Oy-g3k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
