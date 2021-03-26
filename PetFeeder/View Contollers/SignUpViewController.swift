@@ -26,8 +26,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 		
 		setUpElements()
-
-        // Do any additional setup after loading the view.
     }
 
 	@IBAction func signUpTapped(_ sender: Any) {
@@ -44,7 +42,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 			let err = createUserAPI()
 			if err == nil {
 				//success creating user, go home
-				self.transitionToHome()
+				self.performSegue(withIdentifier: "signUpToHomeSegue", sender: nil)
 			}
 		}
 	}
@@ -119,15 +117,5 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 			}
 		}
 		return success
-	}
-	
-	func transitionToHome() {
-		let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
-		
-		view.window?.rootViewController = homeViewController
-		view.window?.makeKeyAndVisible()
-	
-	}
-	
-	
+	}	
 }

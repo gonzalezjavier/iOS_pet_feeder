@@ -13,11 +13,20 @@
             <objects>
                 <viewController storyboardIdentifier="LoginSignUpVC" id="BYZ-38-t0r" customClass="ViewController" customModule="PetFeeder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automated Pet Feeder" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5v-p5-8kR">
+                                <rect key="frame" x="40" y="84" width="310" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="LzX-bO-DCu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XlC-g0-Kgy">
-                                <rect key="frame" x="40" y="596" width="310" height="120"/>
+                                <rect key="frame" x="40" y="650" width="310" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wl-DW-Zoo">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -43,11 +52,14 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z5v-p5-8kR" secondAttribute="trailing" constant="40" id="HQj-8z-YAO"/>
+                            <constraint firstItem="z5v-p5-8kR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="IZW-4e-S6q"/>
                             <constraint firstItem="XlC-g0-Kgy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="Iyl-6N-CvE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XlC-g0-Kgy" secondAttribute="trailing" constant="40" id="MD8-u9-rzD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XlC-g0-Kgy" secondAttribute="bottom" constant="40" id="Vn3-xh-65x"/>
+                            <constraint firstItem="z5v-p5-8kR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="pjg-gT-8Wz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Npo-9H-YUY"/>
@@ -58,18 +70,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="114.50892857142857"/>
+            <point key="canvasLocation" x="1071" y="127"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="4NO-KC-EC7">
             <objects>
                 <viewController id="Jeh-Oa-GmO" customClass="SignUpViewController" customModule="PetFeeder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FHf-Ny-19e">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8MN-pO-XyA">
-                                <rect key="frame" x="40" y="40" width="310" height="500"/>
+                                <rect key="frame" x="40" y="84" width="310" height="500"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kol-jD-vpI">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -105,7 +117,7 @@
                                         <rect key="frame" x="0.0" y="350" width="310" height="50"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="M9l-hi-EEC"/>
+                                            <segue destination="jt4-5Y-FFx" kind="unwind" unwindAction="unwindToOne:" id="Cb6-Oo-gyO"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1r-dR-wW7">
@@ -128,7 +140,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qzi-Ph-aqm"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qzi-Ph-aqm" firstAttribute="trailing" secondItem="8MN-pO-XyA" secondAttribute="trailing" constant="40" id="1ek-Rh-5Nq"/>
                             <constraint firstItem="8MN-pO-XyA" firstAttribute="leading" secondItem="qzi-Ph-aqm" secondAttribute="leading" constant="40" id="gPN-pq-wdO"/>
@@ -144,9 +156,11 @@
                         <outlet property="lastNameTextField" destination="dmW-gD-32P" id="gCz-vh-FRG"/>
                         <outlet property="passwordTextField" destination="uAb-oG-n0q" id="U5d-vc-RMe"/>
                         <outlet property="signUpButton" destination="fHz-ij-I5B" id="E8Z-W4-zc8"/>
+                        <segue destination="BRl-Gb-VLv" kind="show" identifier="signUpToHomeSegue" id="v8o-K8-OhZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOP-D8-vee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="jt4-5Y-FFx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1887" y="-240"/>
         </scene>
@@ -155,11 +169,11 @@
             <objects>
                 <viewController id="zUQ-Hh-82P" customClass="LoginViewController" customModule="PetFeeder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bbN-tM-Wdy">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zDu-z8-J0J">
-                                <rect key="frame" x="50" y="50" width="290" height="330"/>
+                                <rect key="frame" x="50" y="94" width="290" height="330"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nic-t0-lID">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
@@ -185,7 +199,7 @@
                                         <rect key="frame" x="0.0" y="210" width="290" height="50"/>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="tBE-0h-InI"/>
+                                            <segue destination="Kfn-IQ-xV0" kind="unwind" unwindAction="unwindToOne:" id="jE6-gW-pO3"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejN-7W-Anp">
@@ -204,7 +218,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fPg-Bg-2bN"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fPg-Bg-2bN" firstAttribute="trailing" secondItem="zDu-z8-J0J" secondAttribute="trailing" constant="50" id="X2p-kr-WT1"/>
                             <constraint firstItem="zDu-z8-J0J" firstAttribute="top" secondItem="fPg-Bg-2bN" secondAttribute="top" constant="50" id="bRu-ho-xri"/>
@@ -218,9 +232,11 @@
                         <outlet property="errorLabel" destination="ejN-7W-Anp" id="vTa-z9-Beo"/>
                         <outlet property="loginButton" destination="Qqh-zk-RGD" id="gpx-1A-jlx"/>
                         <outlet property="passwordTextField" destination="DPU-Mi-fgW" id="iLh-sj-Qrr"/>
+                        <segue destination="BRl-Gb-VLv" kind="show" identifier="loginToHomeSegue" id="oMe-80-rLC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hG6-Uy-ilc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Kfn-IQ-xV0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1887" y="430"/>
         </scene>
@@ -243,7 +259,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="GcR-Gu-bfk"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="50"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kzc-yE-vHU" userLabel="Dispense Food Button">
@@ -403,7 +419,7 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <state key="normal" title="Sign Out"/>
                                                 <connections>
-                                                    <action selector="signOutTapped:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="erC-yY-tBB"/>
+                                                    <action selector="signOutTapped:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="ssj-UR-yNa"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -423,7 +439,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sGu-Jf-KTU"/>
-                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.2745118439" green="0.27450600269999997" blue="0.27450996640000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="wwn-T2-aYm" firstAttribute="leading" secondItem="v9c-YQ-owU" secondAttribute="leading" id="2cc-jz-v2h"/>
                             <constraint firstItem="wwn-T2-aYm" firstAttribute="top" secondItem="sGu-Jf-KTU" secondAttribute="top" id="Bxa-se-g4k"/>
@@ -431,6 +447,7 @@
                             <constraint firstAttribute="bottom" secondItem="wwn-T2-aYm" secondAttribute="bottom" id="ebG-hW-b5Z"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="wtP-sy-XbR"/>
                     <connections>
                         <outlet property="bowlWeightLabel" destination="yb6-Fu-CoR" id="87X-19-YWL"/>
                         <outlet property="currentBowlWeightLabel" destination="BLj-AT-pZ8" id="8LO-cc-3KU"/>
@@ -452,9 +469,11 @@
                         <outlet property="signOutButton" destination="lIp-4c-r0v" id="hCG-0u-UuP"/>
                         <outlet property="tareButton" destination="8J1-DA-3zz" id="kEe-OP-GMp"/>
                         <outlet property="updateButton" destination="TPn-Qm-UqA" id="6X6-mK-NRA"/>
+                        <segue destination="1wM-sZ-4eK" kind="unwind" identifier="unwindToOne" unwindAction="unwindToOne:" id="itb-jj-st5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDq-Oy-g3k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="1wM-sZ-4eK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2698.4615384615386" y="127.25118483412322"/>
         </scene>
@@ -473,16 +492,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nrr-hj-hjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
+            <point key="canvasLocation" x="200" y="127"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tBE-0h-InI"/>
+        <segue reference="v8o-K8-OhZ"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

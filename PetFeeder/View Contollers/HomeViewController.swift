@@ -131,7 +131,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	
 	@IBAction func updateButtonPressed(_ sender: Any) {
 		//update database with current values of sliders and date/time
-		
 		updateUserData()
 	}
 	
@@ -182,18 +181,11 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	func signOutUser() {
 		do {
 			try FirebaseAuth.Auth.auth().signOut()
-			transitionToLoginSignUp()
+			performSegue(withIdentifier: "unwindToOne", sender: self)
 			print("signed out successfully")
 		} catch {
 			print("cant sign out")
 		}
-	}
-	
-	func transitionToLoginSignUp() {
-		let loginSignUpViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.loginSignUpController) as? ViewController
-		
-		view.window?.rootViewController = loginSignUpViewController
-		view.window?.makeKeyAndVisible()
 	}
 	
 	@objc func keyboardWillChange(notification: NSNotification) {

@@ -13,16 +13,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 	
 	
 	@IBOutlet weak var emailTextField: UITextField!
-	
-	
 	@IBOutlet weak var passwordTextField: UITextField!
-	
 	@IBOutlet weak var loginButton: UIButton!
-	
-	
 	@IBOutlet weak var errorLabel: UILabel!
-	
-	
 	@IBOutlet weak var cancelButton: UIButton!
 	
 	
@@ -48,7 +41,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		//Set up return key type
 		emailTextField.returnKeyType = .done
 		passwordTextField.returnKeyType = .done
-		
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -68,13 +60,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		errorLabel.alpha = 1
 	}
 	
-	func transitionToHome() {
-		let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
-		
-		view.window?.rootViewController = homeViewController
-		view.window?.makeKeyAndVisible()
-	
-	}
 	
 	@IBAction func loginTapped(_ sender: Any) {
 		//Validates that text fields are filled in
@@ -97,7 +82,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 					self.errorLabel.alpha = 1
 				} else {
 					//transition to home
-					self.transitionToHome()
+					self.performSegue(withIdentifier: "loginToHomeSegue", sender: nil)
 				}
 			}
 				
