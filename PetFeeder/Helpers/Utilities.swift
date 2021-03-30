@@ -49,4 +49,16 @@ class Utilities {
 		return passwordTest.evaluate(with: password)
 	}
 	
+	static func animateButtonPress(_ button:UIButton) {
+		UIView.animate(withDuration: 0.1,
+			animations: {
+				button.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+			},
+			completion: { _ in
+				UIView.animate(withDuration: 0.1) {
+					button.transform = CGAffineTransform.identity
+				}
+			})
+	}
+	
 }

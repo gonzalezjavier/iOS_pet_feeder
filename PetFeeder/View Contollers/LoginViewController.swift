@@ -39,13 +39,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		emailTextField.delegate = self
 		passwordTextField.delegate = self
 		//Set up return key type
-		emailTextField.returnKeyType = .done
-		passwordTextField.returnKeyType = .done
+		emailTextField.returnKeyType = .next
+		passwordTextField.returnKeyType = .go
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		textField.resignFirstResponder()
+		keyboardReturn(textField)
 		return true
+	}
+	
+	func keyboardReturn(_ textField: UITextField) {
+		switch textField {
+		case emailTextField:
+			self.passwordTextField.becomeFirstResponder()
+		default:
+			self.passwordTextField.resignFirstResponder()
+			self.loginTapped(self)
+		}
 	}
 	
 	func validateFields() -> String? {

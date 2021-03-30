@@ -42,7 +42,7 @@
                                         </constraints>
                                         <state key="normal" title="Log In"/>
                                         <connections>
-                                            <segue destination="zUQ-Hh-82P" kind="show" id="VlZ-0E-cDh"/>
+                                            <segue destination="zUQ-Hh-82P" kind="show" identifier="" id="VlZ-0E-cDh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -66,6 +66,7 @@
                     <connections>
                         <outlet property="loginButton" destination="UYA-IZ-Yw2" id="G9q-EW-dkA"/>
                         <outlet property="signUpButton" destination="3wl-DW-Zoo" id="WX6-He-uL1"/>
+                        <segue destination="BRl-Gb-VLv" kind="show" identifier="homeSegue" animates="NO" id="Qiy-eP-ZFe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -101,7 +102,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uAb-oG-n0q">
                                         <rect key="frame" x="0.0" y="210" width="310" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHz-ij-I5B">
                                         <rect key="frame" x="0.0" y="280" width="310" height="50"/>
@@ -183,7 +184,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DPU-Mi-fgW">
                                         <rect key="frame" x="0.0" y="70" width="290" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartQuotesType="no" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qqh-zk-RGD">
                                         <rect key="frame" x="0.0" y="140" width="290" height="50"/>
@@ -267,6 +268,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="EPU-eu-XRh"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <state key="normal" title="Dispense Food"/>
                                                 <connections>
                                                     <action selector="dispenseFoodBtnPressed:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="Cj6-ge-mz9"/>
@@ -276,12 +278,12 @@
                                                 <rect key="frame" x="0.0" y="340" width="310" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feeding Duration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYS-4Q-tNU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="229" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="268.33333333333331" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Num" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RX3-hm-g5k">
-                                                        <rect key="frame" x="239" y="0.0" width="71" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RX3-hm-g5k">
+                                                        <rect key="frame" x="278.33333333333331" y="0.0" width="31.666666666666686" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -304,13 +306,13 @@
                                                 <rect key="frame" x="0.0" y="440" width="310" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Bowl Weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLj-AT-pZ8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="222.33333333333334" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="275.33333333333331" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yb6-Fu-CoR">
-                                                        <rect key="frame" x="232.33333333333329" y="0.0" width="77.666666666666657" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yb6-Fu-CoR">
+                                                        <rect key="frame" x="285.33333333333331" y="0.0" width="24.666666666666686" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -325,6 +327,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="nQR-rN-a00"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <state key="normal" title="Tare Bowl"/>
                                                 <connections>
                                                     <action selector="tareBtnPressed:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="Raq-oH-TIN"/>
@@ -339,7 +342,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Num" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxL-bA-QYx">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxL-bA-QYx">
                                                         <rect key="frame" x="261.33333333333331" y="0.0" width="48.666666666666686" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -406,6 +409,7 @@
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPn-Qm-UqA">
                                                 <rect key="frame" x="0.0" y="840" width="310" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <state key="normal" title="Update"/>
                                                 <connections>
                                                     <action selector="updateButtonPressed:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="0Fp-Yk-g2h"/>

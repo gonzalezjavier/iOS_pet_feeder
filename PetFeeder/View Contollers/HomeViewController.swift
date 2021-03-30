@@ -33,20 +33,32 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var mainStackViewTopConstraint: NSLayoutConstraint!
 	let mainVStackViewTopConstraint:CGFloat = -9;
 	
-	//Firebase references
-	let db = Firestore.firestore()
+	var fromSignUp = false
+	var dispense = 0
+	var tare = 0
+	var feedDuration = 0
+	var currentBowlWeight = 0
+	var minimumBowlWeight = 0
+	var scheduleOne = ""
+	var scheduleTwo = ""
 	
+	
+	let db = Database.database().reference()
+	var userid = ""
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		//get user data
-		DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-			//after delay get current values
+		
+		if !fromSignUp {
 			self.getUserData()
 		}
+		
 		//Set up Elements
 		self.setUpElements()
-
+		//Set up bowl weight observer
+		observeCurrentBowlWeight()
+		
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -72,11 +84,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		//Sets the return key type
 		scheduleOneTextField.returnKeyType = .done
 		scheduleTwoTextField.returnKeyType = .done
-		
 	}
 	@IBAction func signOutTapped(_ sender: Any) {
 		//Sign out user
-		self.signOutUser()
+		let alertController = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
+		alertController.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { (UIAlertAction) in
+			self.signOutUser()
+		}))
+		alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		present(alertController, animated: true, completion: nil)
 	}
 	
 	@IBAction func feedDurationSliderMoved(_ sender: Any) {
@@ -91,31 +107,35 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	@IBAction func dispenseFoodBtnPressed(_ sender: Any) {
+		Utilities.animateButtonPress(dispenseButton)
 		//Send one to the database dispense field
-		let ref = db.collection("users").document(FirebaseAuth.Auth.auth().currentUser!.uid);
-		ref.updateData([
-			"feedinginfo.dispense": 1
-		]) { err in
-			if let err = err {
-				print("Error updating document: \(err)")
-			} else {
-				print("Document successfully updated")
-			}
-		}
+		guard let key = db.child("users").child(userid).child("feedinginfo").key else { return }
+		let info = ["dispense": 1,
+					"feedduration": self.feedDuration,
+					"currentbowlweight": self.currentBowlWeight,
+					"tarebowl": 0,
+					"minbowlweight": self.minimumBowlWeight,
+					"scheduleone":"",
+					"scheduletwo":""] as [String : Any]
+
+		let childUpdates = ["/users/\(userid)/\(key)/": info]
+		db.updateChildValues(childUpdates)
 	}
 	
 	@IBAction func tareBtnPressed(_ sender: Any) {
+		Utilities.animateButtonPress(tareButton)
 		//Send one to the database tare field
-		let ref = db.collection("users").document(FirebaseAuth.Auth.auth().currentUser!.uid);
-		ref.updateData([
-			"feedinginfo.tarebowl": 1
-		]) { err in
-			if let err = err {
-				print("Error updating document: \(err)")
-			} else {
-				print("Document successfully updated")
-			}
-		}
+		guard let key = db.child("users").child(userid).child("feedinginfo").key else { return }
+		let info = ["dispense": 0,
+					"feedduration": self.feedDuration,
+					"currentbowlweight": self.currentBowlWeight,
+					"tarebowl": 1,
+					"minbowlweight": self.minimumBowlWeight,
+					"scheduleone":"",
+					"scheduletwo":""] as [String : Any]
+
+		let childUpdates = ["/users/\(userid)/\(key)/": info]
+		db.updateChildValues(childUpdates)
 	}
 	
 	@IBAction func scheduleOneEditted(_ sender: Any) {
@@ -131,14 +151,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	
 	@IBAction func updateButtonPressed(_ sender: Any) {
 		//update database with current values of sliders and date/time
+		Utilities.animateButtonPress(updateButton)
 		updateUserData()
 	}
 	
 	func getUserData() {
-		let dbref = Database.database().reference()
-		
 		let userID = Auth.auth().currentUser?.uid
-		dbref.child("users").child(userID!).child("feedinginfo").observeSingleEvent(of: .value, with: { [self] (snapshot) in
+		userid = userID!
+		db.child("users").child(userID!).child("feedinginfo").observeSingleEvent(of: .value, with: { [self] (snapshot) in
 			// Get user value
 			let value = snapshot.value as? NSDictionary
 			let bowlweight = value?["currentbowlweight"] as? Int64 ?? 0
@@ -149,13 +169,17 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 			//let scheduleone = value?["scheduleone"] as? String ?? ""
 			//let scheduletwo = value?["scheduletwo"] as? String ?? ""
 			
+			self.currentBowlWeight = Int(bowlweight)
+			self.minimumBowlWeight = Int(minbowlweight)
+			self.tare = 0
+			self.feedDuration = Int(feedduration)
+			self.dispense = 0
+			
 			bowlWeightLabel.text = String(bowlweight)
 			feedDurationVal.text = String(feedduration)
 			feedDurationSlider.value = Float(feedduration)
 			minBowlWeightVal.text = String(minbowlweight)
 			minBowlWeightSlider.value = Float(minbowlweight)
-
-			// ...
 			}) { (error) in
 			print(error.localizedDescription)
 		}
@@ -163,9 +187,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	
 	
 	func updateUserData() {
-		let dbref = Database.database().reference()
-		let userid = Auth.auth().currentUser?.uid
-		guard let key = dbref.child("users").child(userid!).child("feedinginfo").key else { return }
+		//update local variables
+		feedDuration = Int(feedDurationSlider.value)
+		currentBowlWeight = Int(bowlWeightLabel.text!)!
+		minimumBowlWeight = Int(minBowlWeightSlider.value)
+
+		guard let key = db.child("users").child(userid).child("feedinginfo").key else { return }
 		let info = ["dispense": 0,
 					"feedduration": Int(feedDurationSlider.value),
 					"currentbowlweight": Int(bowlWeightLabel.text!)!,
@@ -173,9 +200,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 					"minbowlweight": Int(minBowlWeightSlider.value),
 					"scheduleone":"",
 					"scheduletwo":""] as [String : Any]
-		let childUpdates = ["/users/\(userid!)/\(key)/": info]
-		dbref.updateChildValues(childUpdates)
-
+		let childUpdates = ["/users/\(userid)/\(key)/": info]
+		db.updateChildValues(childUpdates)
 	}
 	
 	func signOutUser() {
@@ -205,6 +231,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		textField.resignFirstResponder()
 		return true
+	}
+	
+	func observeCurrentBowlWeight() {
+		db.child("users").child(userid).child("feedinginfo/currentbowlweight").observe(.value) { (DataSnapshot) in
+			let cbw = DataSnapshot.value as? Int ?? 0
+			self.bowlWeightLabel.text = String(cbw)
+			self.currentBowlWeight = cbw
+		}
 	}
 
 }

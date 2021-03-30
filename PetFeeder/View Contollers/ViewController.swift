@@ -22,9 +22,11 @@ class ViewController: UIViewController {
 		setUpElements()
 		//Go to home page if already logged in
 		if FirebaseAuth.Auth.auth().currentUser != nil {
-			DispatchQueue.main.async {
-				self.transitionToHome()
-			}
+//			DispatchQueue.main.async {
+//				//self.transitionToHome()
+//				self.performSegue(withIdentifier: "homeSegue", sender: self)
+//			}
+			performSegue(withIdentifier: "homeSegue", sender: self)
 		}
 	}
 	func transitionToHome() {

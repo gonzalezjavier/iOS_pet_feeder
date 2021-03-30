@@ -47,9 +47,29 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		}
 	}
 	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+	{
+		if segue.destination is HomeViewController {
+			let vc = segue.destination as? HomeViewController
+			vc?.fromSignUp = true
+		}
+	}
+	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		textField.resignFirstResponder()
+		self.keyboardReturn(textField)
 		return true
+	}
+	
+	func keyboardReturn(_ textField: UITextField) {
+		switch textField {
+		case self.firstNameTextField:
+			self.lastNameTextField.becomeFirstResponder()
+		case self.lastNameTextField:
+			self.emailTextField.becomeFirstResponder()
+		default:
+			self.passwordTextField.resignFirstResponder()
+			self.signUpTapped(self)
+		}
 	}
 	
 	func setUpElements() {
@@ -69,10 +89,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		emailTextField.delegate = self
 		passwordTextField.delegate = self
 		//set return key type
-		firstNameTextField.returnKeyType = .done
-		lastNameTextField.returnKeyType = .done
-		emailTextField.returnKeyType = .done
-		passwordTextField.returnKeyType = .done
+		firstNameTextField.returnKeyType = .next
+		firstNameTextField.returnKeyType = .next
+		lastNameTextField.returnKeyType = .next
+		emailTextField.returnKeyType = .next
+		passwordTextField.returnKeyType = .go
 	}
 	
 	func validateFields() -> String? {
