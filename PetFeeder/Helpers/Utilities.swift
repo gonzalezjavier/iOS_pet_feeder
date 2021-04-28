@@ -43,6 +43,16 @@ class Utilities {
 		button.tintColor = UIColor.white
 	}
 	
+	static func styleDayOfWeekButton(_ button:UIButton) {
+		//button.setBackgroundImage(UIImage(systemName: "square"), for: .normal)
+		button.layer.cornerRadius = 10
+		button.layer.borderColor = CGColor.init(red: 50/255, green: 175/255, blue: 100/255, alpha: 1)
+		button.layer.borderWidth = 2
+		button.setTitleColor(UIColor.white, for: .normal)
+		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+		//button.tintColor = UIColor.init(red: 50/255, green: 175/255, blue: 100/255, alpha: 1)
+	}
+	
 	static func isPasswordValid(_ password : String) -> Bool {
 		
 		let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")

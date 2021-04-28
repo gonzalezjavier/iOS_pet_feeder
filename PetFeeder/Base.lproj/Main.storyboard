@@ -246,14 +246,14 @@
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="BRl-Gb-VLv" customClass="HomeViewController" customModule="PetFeeder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v9c-YQ-owU">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwn-T2-aYm">
-                                <rect key="frame" x="0.0" y="44" width="390" height="800"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="1056"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hM8-Cb-oxA" userLabel="Main Vertical Stack View">
-                                        <rect key="frame" x="40" y="-9" width="310" height="960"/>
+                                        <rect key="frame" x="40" y="-9" width="310" height="1020"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Feeder Dashboard" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmg-Qo-NNK">
                                                 <rect key="frame" x="0.0" y="0.0" width="310" height="200"/>
@@ -363,8 +363,74 @@
                                                     <action selector="minBowlWeightSliderMoved:" destination="BRl-Gb-VLv" eventType="valueChanged" id="yGm-P0-iKI"/>
                                                 </connections>
                                             </slider>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-9N-Z8K" userLabel="Horizontal Schedule Labels Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="axH-L9-f4U" userLabel="Horizontal Days of Week Stack View">
                                                 <rect key="frame" x="0.0" y="720" width="310" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3B-RL-hsd" userLabel="SUN Button">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="Sun"/>
+                                                        <connections>
+                                                            <action selector="sunButtonTouched:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="pjL-c4-6wF"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iaf-U4-8yt" userLabel="MON Button">
+                                                        <rect key="frame" x="45" y="0.0" width="40" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="Mon"/>
+                                                        <state key="disabled" backgroundImage="square" catalog="system"/>
+                                                        <state key="selected" backgroundImage="square.fill" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="monButtonTouched:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="Kj6-pO-MFW"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKd-7R-21j" userLabel="TUE Button">
+                                                        <rect key="frame" x="90" y="0.0" width="40" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="Tue"/>
+                                                        <connections>
+                                                            <action selector="tueButtonTouched:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="KQM-3b-PB8"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzO-OE-7DB" userLabel="WED Button">
+                                                        <rect key="frame" x="135" y="0.0" width="40" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="Wed"/>
+                                                        <connections>
+                                                            <action selector="wedButtonTouched:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="Uws-Fp-l0m"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-nA-LX5" userLabel="THU Button">
+                                                        <rect key="frame" x="180" y="0.0" width="40" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="Thu"/>
+                                                        <connections>
+                                                            <action selector="thuButtonTouched:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="3So-Qy-Mer"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dyt-Eo-Edf" userLabel="FRI Button">
+                                                        <rect key="frame" x="225" y="0.0" width="40" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="Fri"/>
+                                                        <connections>
+                                                            <action selector="friButtonTouched:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="myV-BB-wHY"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ze-1z-Kmf" userLabel="SAT Button">
+                                                        <rect key="frame" x="270" y="0.0" width="40" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="Sat"/>
+                                                        <connections>
+                                                            <action selector="satButtonTouched:" destination="BRl-Gb-VLv" eventType="touchUpInside" id="OIt-0e-Ibc"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="036-dr-Rdl"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-9N-Z8K" userLabel="Horizontal Schedule Labels Stack View">
+                                                <rect key="frame" x="0.0" y="780" width="310" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYg-fC-RAD">
                                                         <rect key="frame" x="0.0" y="0.0" width="155" height="40"/>
@@ -384,14 +450,14 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Km5-gF-Pl0" userLabel="Horizontal Schedule Text Fields Stack View">
-                                                <rect key="frame" x="0.0" y="780" width="310" height="40"/>
+                                                <rect key="frame" x="0.0" y="840" width="310" height="40"/>
                                                 <subviews>
                                                     <textField opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="TEt-Eo-wXi" userLabel="Schedule 1 Time Text Field">
                                                         <rect key="frame" x="0.0" y="0.0" width="145" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
-                                                            <action selector="scheduleOneEditted:" destination="BRl-Gb-VLv" eventType="editingDidEnd" id="7a9-6h-MgU"/>
+                                                            <action selector="scheduleOneEditted:" destination="BRl-Gb-VLv" eventType="editingDidBegin" id="tkb-Zd-dMO"/>
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s84-Ck-nPW" userLabel="Schedule 2 Time Text Field">
@@ -399,7 +465,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <connections>
-                                                            <action selector="scheduleTwoEditted:" destination="BRl-Gb-VLv" eventType="editingDidEnd" id="r0e-8E-NRk"/>
+                                                            <action selector="scheduleTwoEditted:" destination="BRl-Gb-VLv" eventType="editingDidBegin" id="njZ-53-2UE"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -408,7 +474,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPn-Qm-UqA">
-                                                <rect key="frame" x="0.0" y="840" width="310" height="50"/>
+                                                <rect key="frame" x="0.0" y="900" width="310" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <state key="normal" title="Update"/>
                                                 <connections>
@@ -416,7 +482,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIp-4c-r0v">
-                                                <rect key="frame" x="0.0" y="910" width="310" height="50"/>
+                                                <rect key="frame" x="0.0" y="970" width="310" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="uop-wo-RN7"/>
                                                 </constraints>
@@ -452,6 +518,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wtP-sy-XbR"/>
+                    <size key="freeformSize" width="390" height="1100"/>
                     <connections>
                         <outlet property="bowlWeightLabel" destination="yb6-Fu-CoR" id="87X-19-YWL"/>
                         <outlet property="currentBowlWeightLabel" destination="BLj-AT-pZ8" id="8LO-cc-3KU"/>
@@ -459,11 +526,14 @@
                         <outlet property="feedDurationLabel" destination="wYS-4Q-tNU" id="uDy-21-q3q"/>
                         <outlet property="feedDurationSlider" destination="G8M-6T-Orb" id="tja-fw-Lz0"/>
                         <outlet property="feedDurationVal" destination="RX3-hm-g5k" id="L0A-fm-aSI"/>
+                        <outlet property="friButton" destination="Dyt-Eo-Edf" id="cGI-UR-pgN"/>
                         <outlet property="mainStackViewTopConstraint" destination="iUH-TV-GLn" id="Ggo-At-9Wy"/>
                         <outlet property="mainVStackView" destination="hM8-Cb-oxA" id="oqy-dC-dZR"/>
                         <outlet property="minBowlWeightLabel" destination="poa-Fb-HHJ" id="8Zs-7s-sfX"/>
                         <outlet property="minBowlWeightSlider" destination="4nd-Nx-wzP" id="DV7-SA-CbY"/>
                         <outlet property="minBowlWeightVal" destination="pxL-bA-QYx" id="1zL-e0-b8N"/>
+                        <outlet property="monButton" destination="Iaf-U4-8yt" id="QIN-YB-z4u"/>
+                        <outlet property="satButton" destination="4Ze-1z-Kmf" id="3pc-Nt-e3j"/>
                         <outlet property="scheduleOneLabel" destination="UYg-fC-RAD" id="OKq-Rs-iH2"/>
                         <outlet property="scheduleOneTextField" destination="TEt-Eo-wXi" id="YP7-f5-JW8"/>
                         <outlet property="scheduleTwoLabel" destination="0iv-te-FFk" id="dhN-kV-f8n"/>
@@ -471,8 +541,12 @@
                         <outlet property="schedulingHStackView" destination="Km5-gF-Pl0" id="mfz-fS-YlI"/>
                         <outlet property="scrollView" destination="wwn-T2-aYm" id="Pma-lP-kq1"/>
                         <outlet property="signOutButton" destination="lIp-4c-r0v" id="hCG-0u-UuP"/>
+                        <outlet property="sunButton" destination="Q3B-RL-hsd" id="6PS-kM-s5l"/>
                         <outlet property="tareButton" destination="8J1-DA-3zz" id="kEe-OP-GMp"/>
+                        <outlet property="thuButton" destination="yuZ-nA-LX5" id="L1E-Ab-WM9"/>
+                        <outlet property="tueButton" destination="fKd-7R-21j" id="jcF-o8-Qmb"/>
                         <outlet property="updateButton" destination="TPn-Qm-UqA" id="6X6-mK-NRA"/>
+                        <outlet property="wedButton" destination="dzO-OE-7DB" id="Z8Y-Rn-5sh"/>
                         <segue destination="1wM-sZ-4eK" kind="unwind" identifier="unwindToOne" unwindAction="unwindToOne:" id="itb-jj-st5"/>
                     </connections>
                 </viewController>
@@ -500,9 +574,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="v8o-K8-OhZ"/>
+        <segue reference="Qiy-eP-ZFe"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <image name="square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
