@@ -18,6 +18,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var feedDurationSlider: UISlider!
 	@IBOutlet weak var currentBowlWeightLabel: UILabel!
 	@IBOutlet weak var bowlWeightLabel: UILabel!
+	@IBOutlet weak var lowFoodLabel: UILabel!
 	@IBOutlet weak var tareButton: UIButton!
 	@IBOutlet weak var minBowlWeightLabel: UILabel!
 	@IBOutlet weak var minBowlWeightVal: UILabel!
@@ -46,12 +47,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	var dispense = 0
 	var tare = 0
 	var feedDuration = 0
+	var lowFood = 0
 	var currentBowlWeight = 0
 	var minimumBowlWeight = 0
 	var scheduleOne = ""
 	var scheduleTwo = ""
 	var daysOfWeek = 0b0000000
-	//let hours = 0...23
 	let hours = Array(0...23)
 	let minutes = Array(0...59)
 	var currentHour = 0
@@ -76,32 +77,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		}
 		//Set up Elements
 		self.setUpElements()
-		//Set up bowl weight observer
+		//Set up bowl weight and low food observer
 		observeCurrentBowlWeight()
+		observeLowFood()
 		dayOfWeekButtons = [sunButton, monButton, tueButton, wedButton, thuButton, friButton, satButton]
-		
-//		//creates the timepicker and configures it
-//		timePickerView.delegate = self
-//		timePickerView.dataSource = self
-//		scheduleOneTextField.inputView = timePickerView
-//		scheduleOneTextField.textAlignment = .center
-//		scheduleTwoTextField.inputView = timePickerView
-//		scheduleTwoTextField.textAlignment = .center
-		
-
-//		// ToolBar
-//		let toolBar = UIToolbar()
-//		toolBar.barStyle = .default
-//		toolBar.isTranslucent = true
-//		toolBar.tintColor = UIColor(red: 50/255, green: 175/255, blue: 100/255, alpha: 1)
-//		toolBar.sizeToFit()
-//		// Adding Button ToolBar
-//		let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneClick))
-//		toolBar.setItems([doneButton], animated: false)
-//		toolBar.isUserInteractionEnabled = true
-//		//adds the toolbar to the scrollview of both textfields
-//		scheduleOneTextField.inputAccessoryView = toolBar
-//		scheduleTwoTextField.inputAccessoryView = toolBar
 		
 		//handles the keyboard showing and hiding adjustments
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -122,6 +101,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		Utilities.styleTextField(scheduleOneTextField)
 		Utilities.styleTextField(scheduleTwoTextField)
 		Utilities.styleFilledButton(updateButton)
+		changeLowFoodLabel();
 		//sets the textfield delegates
 		scheduleOneTextField.delegate = self
 		scheduleTwoTextField.delegate = self
@@ -237,6 +217,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		guard let key = db.child("users").child(userid).child("feedinginfo").key else { return }
 		let info = ["dispense": 1,
 					"feedduration": self.feedDuration,
+					"lowfood": self.lowFood,
 					"currentbowlweight": self.currentBowlWeight,
 					"tarebowl": 0,
 					"minbowlweight": self.minimumBowlWeight,
@@ -253,6 +234,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		guard let key = db.child("users").child(userid).child("feedinginfo").key else { return }
 		let info = ["dispense": 0,
 					"feedduration": self.feedDuration,
+					"lowfood": self.lowFood,
 					"currentbowlweight": self.currentBowlWeight,
 					"tarebowl": 1,
 					"minbowlweight": self.minimumBowlWeight,
@@ -264,13 +246,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 	}
 	//handles adding scrollpicker values to schedule one TF
 	@IBAction func scheduleOneEditted(_ sender: UITextField) {
-		//dont think i need anything here
 		lastClickedField = sender
+		timePickerView.selectRow(currentHour, inComponent: 0, animated: false) //hours
+		timePickerView.selectRow(currentMinute, inComponent: 1, animated: false) //minutes
 	}
 	//handles adding the scrollpicker value to schdule two TF
 	@IBAction func scheduleTwoEditted(_ sender: UITextField) {
-		//i dont think i need anything here
 		lastClickedField = sender
+		timePickerView.selectRow(currentHourTwo, inComponent: 0, animated: false) //hours
+		timePickerView.selectRow(currentMinuteTwo, inComponent: 1, animated: false) //minutes
 	}
 	//sends command to update database when button is pressed
 	@IBAction func updateButtonPressed(_ sender: Any) {
@@ -291,6 +275,17 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 			sender.backgroundColor = bg
 		}
 	}
+	
+	func changeLowFoodLabel() {
+		if lowFood==1 {
+			//show message
+			lowFoodLabel.alpha = 1
+		} else {
+			//remove message
+			lowFoodLabel.alpha = 0
+		}
+	}
+	
 	//gets the database values and stores them locally
 	func getUserData() {
 		let userID = Auth.auth().currentUser?.uid
@@ -300,12 +295,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 			let value = snapshot.value as? NSDictionary
 			let bowlweight = value?["currentbowlweight"] as? Int64 ?? 0
 			let minbowlweight = value?["minbowlweight"] as? Int64 ?? 0
+			let lowfood = value?["lowfood"] as? Int64 ?? 0
 			//let tarebowl = value?["tarebowl"] as? Int64 ?? 0
 			let feedduration = value?["feedduration"] as? Int64 ?? 0
 			//let dispense = value?["dispense"] as? Int64 ?? 0
 			let scheduleone = value?["scheduleone"] as? String ?? ""
 			let scheduletwo = value?["scheduletwo"] as? String ?? ""
 			
+			self.lowFood = Int(lowfood)
 			self.currentBowlWeight = Int(bowlweight)
 			self.minimumBowlWeight = Int(minbowlweight)
 			self.tare = 0
@@ -341,15 +338,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		end = scheduleOne.index(before: scheduleOne.endIndex)
 		range = start...end
 		daysOfWeek = Int(scheduleOne[range])!
-		print(daysOfWeek)
 		var temp = 0b1000000
 		for b in dayOfWeekButtons {
 			if (daysOfWeek&temp==temp) {
 				//is set, change appearance
-				print("day of week on\n")
 				changeDayOfWeeksButton(b)
 			}
-			print("after checking" + String(temp))
 			temp = temp >> 1
 		}
 		//schedule two
@@ -379,6 +373,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 		guard let key = db.child("users").child(userid).child("feedinginfo").key else { return }
 		let info = ["dispense": 0,
 					"feedduration": Int(feedDurationSlider.value),
+					"lowfood": self.lowFood,
 					"currentbowlweight": Int(bowlWeightLabel.text!)!,
 					"tarebowl": 0,
 					"minbowlweight": Int(minBowlWeightSlider.value),
@@ -424,6 +419,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
 			self.currentBowlWeight = cbw
 		}
 	}
+	
+	//observes changes in the low food
+	func observeLowFood() {
+		db.child("users").child(userid).child("feedinginfo/lowfood").observe(.value) { (DataSnapshot) in
+			let cbw = DataSnapshot.value as? Int ?? 0
+			self.lowFood = cbw
+			self.changeLowFoodLabel()
+		}
+	}
 
 }
 //handles all scrollpicker attributes
@@ -447,20 +451,24 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource{
 				//the hours
 				currentHour = hours[row]
 				//return String(hours[row])
-				return String(currentHour)
+				//return String(currentHour)
+				return String(format: "%02d", currentHour)
 			} else {
 				currentMinute = minutes[row]
 				//return String(minutes[row])
-				return String(currentMinute)
+				//return String(currentMinute)
+				return String(format: "%02d", currentMinute)
 			}
 		} else {
 			if(component == 0) {
 				//the hours
 				currentHourTwo = hours[row]
-				return String(hours[row])
+				//return String(hours[row])
+				return String(format: "%02d", hours[row])
 			} else {
 				currentMinuteTwo = minutes[row]
-				return String(minutes[row])
+				//return String(minutes[row])
+				return String(format: "%02d", minutes[row])
 			}
 		}
 	}
@@ -471,19 +479,19 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource{
 		if component==0 {
 			//pickerView.selectedRow(inComponent: 1)
 			currentHour = hours[row]
-			scheduleOneTextField.text = String(String(hours[row])+":"+String(currentMinute))
+			scheduleOneTextField.text = String(String(format: "%02d", hours[row])+":"+String(format: "%02d", currentMinute))
 		} else {
 			currentMinute = minutes[row]
-			scheduleOneTextField.text = String(String(currentHour)+":"+String(minutes[row]))
+			scheduleOneTextField.text = String(String(format: "%02d", currentHour)+":"+String(format: "%02d", minutes[row]))
 		}
 		} else {
 			if component==0 {
 				//pickerView.selectedRow(inComponent: 1)
 				currentHourTwo = hours[row]
-				scheduleTwoTextField.text = String(String(hours[row])+":"+String(currentMinuteTwo))
+				scheduleTwoTextField.text = String(String(format: "%02d", hours[row])+":"+String(format: "%02d", currentMinuteTwo))
 			} else {
 				currentMinuteTwo = minutes[row]
-				scheduleTwoTextField.text = String(String(currentHourTwo)+":"+String(minutes[row]))
+				scheduleTwoTextField.text = String(String(format: "%02d", currentHourTwo)+":"+String(format: "%02d", minutes[row]))
 			}
 		}
 	}

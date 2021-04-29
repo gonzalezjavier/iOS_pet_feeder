@@ -134,7 +134,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 				//No error, save user info
 				let dbref = Database.database().reference()
 				
-				dbref.child("users").child(result!.user.uid).setValue(["basicinfo": ["firstname":firstName, "lastname":lastName, "email":email ,"uid": result!.user.uid], "feedinginfo": ["dispense":0, "feedduration":0, "currentbowlweight":0, "tarebowl":0, "minbowlweight":0, "scheduleone":"0", "scheduletwo":"0"]])
+				dbref.child("users").child(result!.user.uid).setValue(["basicinfo": ["firstname":firstName, "lastname":lastName, "email":email ,"uid": result!.user.uid], "feedinginfo": ["dispense":0, "feedduration":0, "lowfood":0, "currentbowlweight":0, "tarebowl":0, "minbowlweight":0, "scheduleone":"0", "scheduletwo":"0"]])
 			}
 		}
 		return success

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kNt-eO-UoJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kNt-eO-UoJ">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -253,7 +253,7 @@
                                 <rect key="frame" x="0.0" y="44" width="390" height="1056"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hM8-Cb-oxA" userLabel="Main Vertical Stack View">
-                                        <rect key="frame" x="40" y="-9" width="310" height="1020"/>
+                                        <rect key="frame" x="40" y="-9" width="310" height="1080"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet Feeder Dashboard" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmg-Qo-NNK">
                                                 <rect key="frame" x="0.0" y="0.0" width="310" height="200"/>
@@ -263,8 +263,17 @@
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="50"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Low Food Level! Refill Hopper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gN2-Nd-p7O">
+                                                <rect key="frame" x="0.0" y="220" width="310" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="hjI-Zu-qCU"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kzc-yE-vHU" userLabel="Dispense Food Button">
-                                                <rect key="frame" x="0.0" y="220" width="310" height="100"/>
+                                                <rect key="frame" x="0.0" y="280" width="310" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="EPU-eu-XRh"/>
                                                 </constraints>
@@ -275,7 +284,7 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mtG-uW-jsX">
-                                                <rect key="frame" x="0.0" y="340" width="310" height="30"/>
+                                                <rect key="frame" x="0.0" y="400" width="310" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feeding Duration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYS-4Q-tNU">
                                                         <rect key="frame" x="0.0" y="0.0" width="268.33333333333331" height="30"/>
@@ -294,7 +303,7 @@
                                                 </constraints>
                                             </stackView>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="G8M-6T-Orb" userLabel="Feeding Duration Slider">
-                                                <rect key="frame" x="-2" y="390" width="314" height="31"/>
+                                                <rect key="frame" x="-2" y="450" width="314" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="kdx-8a-ahH"/>
                                                 </constraints>
@@ -303,7 +312,7 @@
                                                 </connections>
                                             </slider>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bdh-hI-faL" userLabel="Horizontal Bowl Weight Stack View">
-                                                <rect key="frame" x="0.0" y="440" width="310" height="30"/>
+                                                <rect key="frame" x="0.0" y="500" width="310" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Bowl Weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLj-AT-pZ8">
                                                         <rect key="frame" x="0.0" y="0.0" width="275.33333333333331" height="30"/>
@@ -323,7 +332,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8J1-DA-3zz">
-                                                <rect key="frame" x="0.0" y="490" width="310" height="100"/>
+                                                <rect key="frame" x="0.0" y="550" width="310" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="nQR-rN-a00"/>
                                                 </constraints>
@@ -334,7 +343,7 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owy-JF-CkY">
-                                                <rect key="frame" x="0.0" y="610" width="310" height="40"/>
+                                                <rect key="frame" x="0.0" y="670" width="310" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum Bowl Weight (g)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poa-Fb-HHJ">
                                                         <rect key="frame" x="0.0" y="0.0" width="261.33333333333331" height="40"/>
@@ -355,7 +364,7 @@
                                                 </constraints>
                                             </stackView>
                                             <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="4nd-Nx-wzP" userLabel="Minimum Bowl Weight Slider">
-                                                <rect key="frame" x="-2" y="670" width="314" height="31"/>
+                                                <rect key="frame" x="-2" y="730" width="314" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="6Eo-Xc-7e8"/>
                                                 </constraints>
@@ -364,7 +373,7 @@
                                                 </connections>
                                             </slider>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="axH-L9-f4U" userLabel="Horizontal Days of Week Stack View">
-                                                <rect key="frame" x="0.0" y="720" width="310" height="40"/>
+                                                <rect key="frame" x="0.0" y="780" width="310" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3B-RL-hsd" userLabel="SUN Button">
                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -430,7 +439,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Baa-9N-Z8K" userLabel="Horizontal Schedule Labels Stack View">
-                                                <rect key="frame" x="0.0" y="780" width="310" height="40"/>
+                                                <rect key="frame" x="0.0" y="840" width="310" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYg-fC-RAD">
                                                         <rect key="frame" x="0.0" y="0.0" width="155" height="40"/>
@@ -450,7 +459,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Km5-gF-Pl0" userLabel="Horizontal Schedule Text Fields Stack View">
-                                                <rect key="frame" x="0.0" y="840" width="310" height="40"/>
+                                                <rect key="frame" x="0.0" y="900" width="310" height="40"/>
                                                 <subviews>
                                                     <textField opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="TEt-Eo-wXi" userLabel="Schedule 1 Time Text Field">
                                                         <rect key="frame" x="0.0" y="0.0" width="145" height="40"/>
@@ -474,7 +483,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPn-Qm-UqA">
-                                                <rect key="frame" x="0.0" y="900" width="310" height="50"/>
+                                                <rect key="frame" x="0.0" y="960" width="310" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <state key="normal" title="Update"/>
                                                 <connections>
@@ -482,7 +491,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIp-4c-r0v">
-                                                <rect key="frame" x="0.0" y="970" width="310" height="50"/>
+                                                <rect key="frame" x="0.0" y="1030" width="310" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="uop-wo-RN7"/>
                                                 </constraints>
@@ -527,6 +536,7 @@
                         <outlet property="feedDurationSlider" destination="G8M-6T-Orb" id="tja-fw-Lz0"/>
                         <outlet property="feedDurationVal" destination="RX3-hm-g5k" id="L0A-fm-aSI"/>
                         <outlet property="friButton" destination="Dyt-Eo-Edf" id="cGI-UR-pgN"/>
+                        <outlet property="lowFoodLabel" destination="gN2-Nd-p7O" id="7jN-I1-yp8"/>
                         <outlet property="mainStackViewTopConstraint" destination="iUH-TV-GLn" id="Ggo-At-9Wy"/>
                         <outlet property="mainVStackView" destination="hM8-Cb-oxA" id="oqy-dC-dZR"/>
                         <outlet property="minBowlWeightLabel" destination="poa-Fb-HHJ" id="8Zs-7s-sfX"/>
